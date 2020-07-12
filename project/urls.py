@@ -5,9 +5,8 @@ from project import views
 # Create a router and register our viewsets with it.
 router = DefaultRouter()
 router.register(r'activities', views.ActivityViewSet)
-router.register(r'users', views.UserViewSet)
-router.register(r'textmessage', views.TextMessageViewSet)
-router.register(r'monthsubtitle', views.MonthSubtitleViewSet)
+router.register(r'calendars', views.CalendarViewSet)
+
 
 # The API URLs are now determined automatically by the router.
 urlpatterns = [

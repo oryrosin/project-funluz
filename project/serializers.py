@@ -3,35 +3,31 @@ from multiselectfield import MultiSelectField
 from django.contrib.auth.models import User
 from django import forms
 
-from project.models import Activity, AgeGroup, TextMessage, MonthSubtitle
+from project.models import Activity, AgeGroup, Calendar, Information
+
+class CalendarSerializer(serializers.ModelSerializer):
+    month_in_year = serializers.DateField(input_formats=['%m:%Y'], format='%m:%Y')
+    class Meta:
+        model= Calendar
+        fields= ['id', 'is_active', 'month_in_year']
+    
+
+class AgeGroupSerializer(serializers.ModelSerializer):
+    class Meta:
+        model= AgeGroup
+        fields= ['id', 'agegroup']
 
 
 class ActivitySerializer(serializers.ModelSerializer):
     #owner = serializers.ReadOnlyField(source='owner.username')
     class Meta:
         model = Activity
-        fields = ['owner','id','start_time', 'duration', 'title', 'content', 'age_group']
-
-class AgeGroupSerializer(serializers.ModelSerializer):
+        fields = ['id','start_time', 'end_time', 'title', 'content', 'age_group', 'calendar']
+  
+   
+class InformationSerializer(serializers.ModelSerializer):
     class Meta:
-        model= AgeGroup
-        fields= ['id', 'name']      
+        model= Information
+        fields= ['id', 'month_title', 'content', 'image', 'calendar' ]      
 
-
-class UserSerializer(serializers.ModelSerializer):
-    activities = serializers.PrimaryKeyRelatedField(many=True, queryset=Activity.objects.all())
-    class Meta:
-        model = User
-        fields = ['id', 'username', 'activities']
-
-    
-class TextMessageSerializer(serializers.ModelSerializer):
-    class Meta:
-        model= TextMessage
-        fields= ['id', 'content' ]      
-
-
-class MonthSubtitleSerializer(serializers.ModelSerializer):
-    class Meta:
-        model= MonthSubtitle
-        fields= ['id', 'title' ]      
+      
