@@ -6,6 +6,8 @@ from project import views
 router = DefaultRouter()
 router.register(r'activities', views.ActivityViewSet)
 router.register(r'calendars', views.CalendarViewSet)
+router.register(r'icons', views.IconViewSet)
+router.register(r'activity_month', views.ActivityMonthViewSet)
 
 
 # The API URLs are now determined automatically by the router.
