@@ -3,7 +3,7 @@ from multiselectfield import MultiSelectField
 #from django.contrib.auth.models import User
 from django import forms
 
-from project.models import Activity, Icon, ActivityMonth, Calendar
+from project.models import Activity, Icon, ActivityMonth, Calendar, Client
 
 
 class ActivityMonthSerializer(serializers.ModelSerializer):
@@ -12,11 +12,7 @@ class ActivityMonthSerializer(serializers.ModelSerializer):
         fields= ['id', 'month_title', 'information', 'bg_image','calendar' ]
 
 
-#AGE_GROUP=['א', 'ב', 'ג', 'ד']
-
 class ActivitySerializer(serializers.ModelSerializer):
-#    age_group =serializers.ChoiceField(choices=AGE_GROUP)
-    
     class Meta:
         model = Activity
         fields = ['id','start_time', 'end_time', 'title', 'content', 'age_group', 'calendar']
@@ -29,7 +25,7 @@ class ActivitySerializer(serializers.ModelSerializer):
 class IconSerializer(serializers.ModelSerializer):
     class Meta:
         model= Icon
-        fields= ['id', 'pos_x', 'pos_y', 'z_index', 'rotation', 'scale', 'icon','calendar']
+        fields= ['id', 'pos_x', 'pos_y', 'z_index', 'rotation', 'scale', 'icon_image', 'calendar']
 
 
 class CalendarSerializer(serializers.ModelSerializer):
@@ -39,4 +35,10 @@ class CalendarSerializer(serializers.ModelSerializer):
 
     class Meta:
         model= Calendar
-        fields= ['id', 'month', 'activities', 'icons', 'activity_month' ]
+        fields= ['id', 'month', 'activities', 'icons', 'activity_month', 'client' ]
+
+class ClientSerializer(serializers.ModelSerializer):
+    calendars = CalendarSerializer(many=True, read_only=True)
+    class Meta:
+        model= Client
+        fields= ['id', 'name', 'calendars']

@@ -1,16 +1,20 @@
 from django.db import models
 from django import forms
 
+class Client(models.Model):
+    name = models.CharField(max_length=20)
+
+
 class Calendar(models.Model):
-    # owner= models.ForeignKey(User, on_delete=models.CASCADE)
     month = models.DateField()
+    client = models.ForeignKey(Client, blank=False, null=False ,on_delete=models.CASCADE)
 
 
 class ActivityMonth(models.Model): 
     month_title = models.CharField(max_length=20, help_text='Set the month title')
     information= models.TextField(max_length=200,help_text='Insert general month information', blank=False, default='')
     bg_image = models.CharField(max_length=40, blank=True, null=True) # way to enter set of backgrounds for use?
-    calendar = models.ForeignKey(Calendar, on_delete=models.CASCADE)
+    calendar = models.ForeignKey(Calendar, blank=False, null=False ,on_delete=models.CASCADE)
 
 
 class Activity(models.Model):
@@ -18,7 +22,7 @@ class Activity(models.Model):
     end_time = models.DateTimeField(help_text='Set ending time', blank=False, null=False) 
     title = models.CharField(max_length=20, default='Peilut', help_text='Set the activity title')
     content = models.TextField(max_length=50, blank=True, default='')
-    calendar = models.ForeignKey(Calendar, on_delete=models.CASCADE)
+    calendar = models.ForeignKey(Calendar, blank=False, null=False, on_delete=models.CASCADE)
     age_group = models.CharField(max_length=5, default='ד', help_text='א/ב/ג/ד')
 
 class Icon(models.Model): 
@@ -27,6 +31,6 @@ class Icon(models.Model):
     z_index = models.IntegerField()
     rotation = models.IntegerField()
     scale = models.FloatField(default=1)
-    icon = models.CharField(max_length=40, blank=True, null=True) # way to enter set of icons for use?
-    calendar = models.ForeignKey(Calendar, on_delete=models.CASCADE)
+    icon_image = models.CharField(max_length=40, blank=True, null=True) # way to enter set of icons for use?
+    calendar = models.ForeignKey(Calendar, blank=False, null=False, on_delete=models.CASCADE)
  

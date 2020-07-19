@@ -1,16 +1,30 @@
-from django.urls import path, include
-from rest_framework.routers import DefaultRouter
-from project import views
-
-# Create a router and register our viewsets with it.
-router = DefaultRouter()
-router.register(r'activities', views.ActivityViewSet)
-router.register(r'calendars', views.CalendarViewSet)
-router.register(r'icons', views.IconViewSet)
-router.register(r'activity_month', views.ActivityMonthViewSet)
+from rest_framework_nested import routers
+from django.conf.urls import url, include
+from project.views import CalendarViewSet, ActivityViewSet, ClientViewSet, ActivityMonthViewSet, IconViewSet
 
 
-# The API URLs are now determined automatically by the router.
+#Grandparent
+clients_router = routers.SimpleRouter()
+clients_router.register('clients', ClientViewSet, basename='clients')
+#Parent
+calendars_router = routers.NestedSimpleRouter(clients_router, r'clients', lookup='client')
+calendars_router.register(r'calendars', CalendarViewSet, basename='calendars')
+# Child1= activities
+activities_router = routers.NestedSimpleRouter(calendars_router, r'calendars', lookup='calendar')
+activities_router.register(r'activities', ActivityViewSet, basename='activities')
+# Child2= activitymonths
+activity_months_router = routers.NestedSimpleRouter(calendars_router, r'calendars', lookup='calendar')
+activity_months_router.register(r'activity_months', ActivityMonthViewSet, basename='activity_months')
+# Child3= icons
+icons_router = routers.NestedSimpleRouter(calendars_router, r'calendars', lookup='calendar')
+icons_router.register(r'icons', IconViewSet, basename='icons')
+
+
+
 urlpatterns = [
-    path('', include(router.urls)),
+    url(r'^', include(clients_router.urls)),
+    url(r'^', include(calendars_router.urls)),
+    url(r'^', include(activities_router.urls)),
+    url(r'^', include(activity_months_router.urls)),
+    url(r'^', include(icons_router.urls)),
 ]
