@@ -1,13 +1,14 @@
 from django.db import models
 from django import forms
+from django.core.exceptions import ValidationError
 
-class Client(models.Model):
+class Owner(models.Model):
     name = models.CharField(max_length=20)
 
 
 class Calendar(models.Model):
     month = models.DateField()
-    client = models.ForeignKey(Client, blank=False, null=False ,on_delete=models.CASCADE)
+    owner = models.ForeignKey(Owner, blank=False, null=False ,on_delete=models.CASCADE)
 
 
 class ActivityMonth(models.Model): 
@@ -24,6 +25,12 @@ class Activity(models.Model):
     content = models.TextField(max_length=50, blank=True, default='')
     calendar = models.ForeignKey(Calendar, blank=False, null=False, on_delete=models.CASCADE)
     age_group = models.CharField(max_length=5, default='ד', help_text='א/ב/ג/ד')
+
+    def clean(self):
+        if self.end_time < self.start_time:
+            raise ValidationError("End date must be after start date.")
+
+
 
 class Icon(models.Model): 
     pos_x = models.IntegerField()

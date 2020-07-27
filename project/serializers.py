@@ -3,7 +3,7 @@ from multiselectfield import MultiSelectField
 #from django.contrib.auth.models import User
 from django import forms
 
-from project.models import Activity, Icon, ActivityMonth, Calendar, Client
+from project.models import Activity, Icon, ActivityMonth, Calendar, Owner
 
 
 class ActivityMonthSerializer(serializers.ModelSerializer):
@@ -17,9 +17,10 @@ class ActivitySerializer(serializers.ModelSerializer):
         model = Activity
         fields = ['id','start_time', 'end_time', 'title', 'content', 'age_group', 'calendar']
         
-    def time_valid(self):
-        if self.start_time > self.end_time:
-            raise serializers.ValidationError("end must occur after start")       
+    def validate(self, attrs):
+        instance = Activity(**attrs)
+        instance.clean()
+        return attrs
 
 
 class IconSerializer(serializers.ModelSerializer):
@@ -31,14 +32,14 @@ class IconSerializer(serializers.ModelSerializer):
 class CalendarSerializer(serializers.ModelSerializer):
     activities = ActivitySerializer(many=True, read_only=True)
     icons = IconSerializer(many=True, read_only=True)
-    activity_month = ActivityMonthSerializer(many=True, read_only=True)
+    activity_months = ActivityMonthSerializer(many=True, read_only=True)
 
     class Meta:
         model= Calendar
-        fields= ['id', 'month', 'activities', 'icons', 'activity_month', 'client' ]
+        fields= ['id', 'month', 'activities', 'icons', 'activity_months', 'owner' ]
 
-class ClientSerializer(serializers.ModelSerializer):
+class OwnerSerializer(serializers.ModelSerializer):
     calendars = CalendarSerializer(many=True, read_only=True)
     class Meta:
-        model= Client
+        model= Owner
         fields= ['id', 'name', 'calendars']
