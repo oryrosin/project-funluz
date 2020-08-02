@@ -11,22 +11,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b18463c8-2b83-49e9-bdfa-515c7a3e9ac4" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/luz.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/project/migrations/0002_auto_20200722_1603.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/project/test.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/project/try.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/project/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/project/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/project/serializers.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/tests.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/project/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/project/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/funluz/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/funluz/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/project/test.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,7 +31,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/project/try.py" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Desktop/python/start.js" />
     <property name="settings.editor.selected.configurable" value="reference.idesettings.debugger.python" />
   </component>
   <component name="PyDebuggerOptionsProvider">
@@ -119,30 +106,34 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="137" y="19" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1596105229738">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="137" y="19" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1366.728@0.0.1366.728" timestamp="1596105229738" />
     <state x="449" y="150" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1595752756192">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="449" y="150" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1366.728@0.0.1366.728" timestamp="1595752756192" />
-    <state x="299" y="124" key="FileChooserDialogImpl" timestamp="1595790456576">
+    <state x="299" y="124" key="FileChooserDialogImpl" timestamp="1596105172070">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="299" y="124" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1595790456576" />
-    <state width="1323" height="223" key="GridCell.Tab.0.bottom" timestamp="1595876257708">
+    <state x="299" y="124" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1596105172070" />
+    <state width="1323" height="140" key="GridCell.Tab.0.bottom" timestamp="1596105208492">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="223" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1595876257708" />
-    <state width="1323" height="223" key="GridCell.Tab.0.center" timestamp="1595876257708">
+    <state width="1323" height="140" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1596105208492" />
+    <state width="1323" height="140" key="GridCell.Tab.0.center" timestamp="1596105208492">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="223" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1595876257708" />
-    <state width="1323" height="223" key="GridCell.Tab.0.left" timestamp="1595876257707">
+    <state width="1323" height="140" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1596105208492" />
+    <state width="1323" height="140" key="GridCell.Tab.0.left" timestamp="1596105208492">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="223" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1595876257707" />
-    <state width="1323" height="223" key="GridCell.Tab.0.right" timestamp="1595876257708">
+    <state width="1323" height="140" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1596105208492" />
+    <state width="1323" height="140" key="GridCell.Tab.0.right" timestamp="1596105208492">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="223" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1595876257708" />
+    <state width="1323" height="140" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1596105208492" />
     <state width="1323" height="223" key="GridCell.Tab.1.bottom" timestamp="1595876257709">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
