@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'project.apps.ProjectConfig',
     'multiselectfield',
+    'corsheaders',
 
 ]
 
@@ -51,6 +52,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.CommonMiddleware',
 ]
 
 ROOT_URLCONF = 'funluz.urls'
@@ -73,6 +76,9 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'funluz.wsgi.application'
 
+CORS_ORIGIN_WHITELIST = [
+    "http://localhost:3000",
+]
 
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
@@ -122,6 +128,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+
+STATIC_ROOT = "User\luz\env\Lib\site-packages\drf_yasg\static"
 
 REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
