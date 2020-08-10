@@ -1,37 +1,31 @@
 
 #from rest_framework import permissions
-from django.contrib.auth.models import User
-from rest_framework import generics
-
-from rest_framework.reverse import reverse
+#from django.contrib.auth.models import User
 from rest_framework import viewsets
-from rest_framework.decorators import action
-from rest_framework.response import Response
-
 #from project.permissions import IsOwnerOrReadOnly
-from project.models import Activity, ActivityMonth, Icon, Calendar,  Owner
-from project.serializers import IconSerializer, ActivitySerializer, ActivityMonthSerializer, CalendarSerializer, OwnerSerializer
+from project.models import Activity, Information, Icon, Month,  Calendar
+from project.serializers import IconSerializer, ActivitySerializer, InformationSerializer, MonthSerializer, CalendarSerializer
 
-
-class OwnerViewSet(viewsets.ModelViewSet):
-    serializer_class = OwnerSerializer
-    queryset = Owner.objects.all()
-    
 
 class CalendarViewSet(viewsets.ModelViewSet):
     serializer_class = CalendarSerializer
+    queryset = Calendar.objects.all()
+    
+
+class MonthViewSet(viewsets.ModelViewSet):
+    serializer_class = MonthSerializer
 
     def get_queryset(self):
-        return Calendar.objects.filter(owner=self.kwargs['owner_pk'])
+        return Month.objects.filter(calendar=self.kwargs['calendar_pk'])
 
 
-class ActivityMonthViewSet(viewsets.ModelViewSet):
-    serializer_class = ActivityMonthSerializer
+class InformationViewSet(viewsets.ModelViewSet):
+    serializer_class = InformationSerializer
     
     def get_queryset(self):
-        return ActivityMonth.objects.filter(
-            calendar=self.kwargs['calendar_pk'],
-            calendar__owner=self.kwargs['owner_pk']
+        return Information.objects.filter(
+            month=self.kwargs['month_pk'],
+            month__calendar=self.kwargs['calendar_pk']
         )
 
 
@@ -40,14 +34,10 @@ class ActivityViewSet(viewsets.ModelViewSet):
 
     def get_queryset(self):
         return Activity.objects.filter(
-            calendar=self.kwargs['calendar_pk'],
-            calendar__owner=self.kwargs['owner_pk']
+            month=self.kwargs['month_pk'],
+            month__calendar=self.kwargs['calendar_pk']
         )
-    ordering = ('start_time')    
 
-    #def create(self, request, *args, **kwargs):
-    #    request.data.calendar_id = kwargs['calendar_pk']
-    #    return super(viewsets.ModelViewSet, self).create(request, *args, **kwargs)
 
 
 class IconViewSet(viewsets.ModelViewSet):
@@ -55,8 +45,8 @@ class IconViewSet(viewsets.ModelViewSet):
     
     def get_queryset(self):
         return Icon.objects.filter(
-            calendar=self.kwargs['calendar_pk'],
-            calendar__owner=self.kwargs['owner_pk']
+            month=self.kwargs['month_pk'],
+            month__calendar=self.kwargs['calendar_pk']
         )
     
 

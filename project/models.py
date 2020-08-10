@@ -1,21 +1,20 @@
 from django.db import models
-from django import forms
 from django.core.exceptions import ValidationError
 
-class Owner(models.Model):
+class Calendar(models.Model):
     name = models.CharField(max_length=20)
 
 
-class Calendar(models.Model):
+class Month(models.Model):
     month = models.DateField()
-    owner = models.ForeignKey(Owner, blank=False, null=False ,on_delete=models.CASCADE)
-
-
-class ActivityMonth(models.Model): 
-    month_title = models.CharField(max_length=20, help_text='Set the month title')
-    information= models.TextField(max_length=200,help_text='Insert general month information', blank=False, default='')
-    bg_image = models.CharField(max_length=40, blank=True, null=True) # way to enter set of backgrounds for use?
     calendar = models.ForeignKey(Calendar, blank=False, null=False ,on_delete=models.CASCADE)
+
+
+class Information(models.Model):
+    month_title = models.CharField(max_length=20, help_text='Set the month title')
+    details= models.TextField(max_length=200,help_text='Insert general month information', blank=False, default='')
+    bg_image = models.CharField(max_length=40, blank=True, null=True) # way to enter set of backgrounds for use?
+    month = models.ForeignKey(Month, blank=False, null=False ,on_delete=models.CASCADE)
 
 
 class Activity(models.Model):
@@ -23,7 +22,7 @@ class Activity(models.Model):
     end_time = models.DateTimeField(help_text='Set ending time', blank=False, null=False) 
     title = models.CharField(max_length=20, default='Peilut', help_text='Set the activity title')
     content = models.TextField(max_length=50, blank=True, default='')
-    calendar = models.ForeignKey(Calendar, blank=False, null=False, on_delete=models.CASCADE)
+    month = models.ForeignKey(Month, blank=False, null=False, on_delete=models.CASCADE)
     age_group = models.CharField(max_length=5, default='ד', help_text='א/ב/ג/ד')
 
     def clean(self):
@@ -39,5 +38,5 @@ class Icon(models.Model):
     rotation = models.IntegerField()
     scale = models.FloatField(default=1)
     icon_image = models.CharField(max_length=40, blank=True, null=True) # way to enter set of icons for use?
-    calendar = models.ForeignKey(Calendar, blank=False, null=False, on_delete=models.CASCADE)
+    month = models.ForeignKey(Month, blank=False, null=False, on_delete=models.CASCADE)
  
