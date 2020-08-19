@@ -21,6 +21,7 @@ class ActivitySerializer(serializers.ModelSerializer):
         return attrs
 
 
+
 class IconSerializer(serializers.ModelSerializer):
     class Meta:
         model= Icon
